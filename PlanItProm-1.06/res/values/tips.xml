@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tips_female">
+        <item>dress|Dress/Alterations|
+            Buy a vintage prom dress~Vintage and old aren’t the same thing. Vintage can be fun, cool and usually cheaper. Check out consignment shops to find gently used dresses that will showcase your personality.|
+            Raid family closets~Chances are, your older sister, cousin, or, yes, even your mom or grandmother, have more money to spend on nice clothes than you do. Don’t hesitate to borrow a nice dress from one of them.|
+            Visit discount clothing stores~Prom dresses don’t have a very long shelf life. Instead of visiting a high-end fashion store, find a similar outfit at discount clothing stores.|
+            Research in advance~Buying prom dresses out of season can lead to hundreds of dollars in saving. That means more money for shoes, makeup, and accessories. Do your homework and buy your dress at the best possible time.|
+            Check out donatemydress.org, Craigslist or Ebay~You can find great dresses online for a fraction of the cost. Remember that it’s better to buy a dress that’s too big and can be altered than a dress that’s too small.|
+            Rent dresses or accessories~Companies like Rent the Runway allow you to rent dresses and jewelry for special occasions. By renting the dress for a night, you can save yourself the trouble of buying a dress for one time use.|
+            Design your own dress~Inspired by Project Runway? If you’re particularly creative and good with a needle, design your own dress and show off your talents.
+		</item>
+		<item>shoes|Shoes|
+		    Buy shoes online~Many websites such as Zappos often carry designer shoes for less than the price you’d find in stores.|
+		    Raid family closets~Chances are, your older sister, cousin, or, yes, even your mom or grandmother, have more money to spend on nice shoes than you do. Don’t hesitate to borrow shoes from one of them.|
+		</item>
+		<item>accessories|Accessories|
+			Rent dresses or accessories~Companies like Rent the Runway allow you to rent dresses and jewelry for special occasions. By renting the dress for a night, you can save yourself the trouble of buying a dress for one time use.|
+			Raid family closets~Chances are, your older sister, cousin, or, yes, even your mom, have more money to spend on nice clothes than you do. Don’t hesitate to borrow a nice dress from one of them.
+		</item>
+		<item>hair|Hair|
+		    Do your own hair and nails~Invite your best friends over the morning of the prom, relax, throw on some music, and save money by fixing each other’s hair and painting your nails. You’ll be glad you spent more time with your friends, and spent less money on your nails.
+		</item>
+		<item>makeup|Makeup|
+		    Get your makeup done for free~Visit your local mall or department store’s makeup counter and ask for a makeup consultation. To avoid being rude, purchase a few small items from the store, but enjoy your professional makeup job at a fraction of the price.
+		</item>
+		<item>mani|Mani/Pedi|
+		    Do your own hair and nails.~Invite your best friends over the morning of the prom, relax, throw on some music, and save money by fixing each other’s hair and painting your nails. You’ll be glad you spent more time with your friends, and spent less money on your nails.
+		</item>
+		<item>boutonniere|Boutonniere|
+		    Make your own boutonniere~Visit your local grocery store and buy small/midsize flowers such as roses or carnations. With ribbon and wire, you can create your own unique boutonniere that your date will be proud to show off. 
+		</item>
+		<item>tickets|Tickets|
+		    Buy your tickets early.~Some schools offer discounted tickets for students that buy them in advance. Be sure to buy your tickets as early as possible.
+		</item>
+		<item>dinner|Dinner|
+		    Find restaurants with special prom menus~Many restaurants offer special menus targeting prom couples. Look for restaurants that offer discounted rates for multi-course prom dinners. Eat great while spending less.
+		</item>
+		<item>transportation|Transportation|
+		    Divide and conquer.~By splitting the costs of a limo or bus with several of your friends, you drive your own personal costs down.|
+		    Borrow a family car~Instead of shelling out hundreds of dollars to rent a limo, ask your parents, brother, uncle, or anyone with a cool car to loan you theirs for the night. Offer to clean it for free and fill it with gas in return.
+		</item>
+		<item>photos|Pictures|
+		    Stay smart~Smart phones have great cameras and plenty of sharing options. Save yourself some money by taking your own pictures.
+		</item>
+		<item>afterparty|After Party|
+		    Stay In School~Many schools offer cheap, “official” after-parties. Convince your friends to save money by going to the school after-party, as long as you’re together any party will be fun.|
+		    Head home~Have a small gathering at home of your closest friends. There are only a few more nights left in the school year so make sure to enjoy the moments while you can.
+		</item>
+    </string-array>
+    <string-array name="tips_male">
+        <item>tux|Tux/Alterations|
+            Buy a used/vintage tux~These days, renting a tux costs about as much as buying one. Save yourself the pain of renting tuxes year after year and buy a used tuxedo and shoes.|
+            Raid family closets~Chances are, your older brother, cousin, or, yes, even your dad or grandfather, have more money to spend on nice clothes than you do. Don’t hesitate to borrow a tux or shoes from one of them.|
+            Research in advance~Buying tuxedos out of season can lead to hundreds of dollars in saving. That means more money for flowers, dinner and dates. Do your homework and buy your tux at the best possible time.
+        </item>
+        <item>shoes_him|Shoes|
+            Buy shoes online ~Many websites such as Zappos often carry nice tux/dress shoes for less than the price you’d find in stores.|
+            Raid family closets~Chances are, your older brother, cousin, or, yes, even your dad or grandfather, have more money to spend on nice shoes than you do. Don’t hesitate to borrow shoes from one of them.
+        </item>
+        <item>accessories_him|Accessories|
+            Raid family closets~Chances are your older brother, cousin, or, yes, even your dad, have more money to spend on nice clothes than you do. If possible, don’t hesitate to borrow a cummerbund, bowtie or shoes.
+        </item>
+        <item>hair_him|Haircut|
+            Check online~Look online for coupons for local barbershops. It’s okay to spend a little more than you might otherwise as long as you budget for it. Your date will look nice so you should too.
+        </item>
+        <item>corsage|Corsage|
+            Make your own corsage~Visit your local grocery store and buy small/midsize flowers such as roses or carnations. With ribbon and wire, you can create your own unique corsage that your date will be proud to show off.
+        </item>
+        <item>tickets|Tickets|
+            Buy your tickets early.~Some schools offer discounted tickets for students that buy them in advance. Be sure to buy your tickets as early as possible.
+        </item>
+        <item>dinner|Dinner|
+			Cook a fancy dinner~Instead of an expensive night on the town, cook your date a nice meal. Show off your inner chef, and exhibit a sophisticated side that will save your money, and give her something to tell her friends about.
+			Find restaurants with special prom menus~Many restaurants offer special menus targeting prom couples. Look for restaurants that offer discounted rates for multi-course prom dinners. Eat great while spending less.
+        </item>
+        <item>transportation|Transportation|
+            Borrow a family car~Instead of shelling out hundreds of dollars to rent a limo, ask your parents, brother, uncle, or anyone with a cool car to loan you theirs for the night. Offer to clean it for free and fill it with gas in return. 
+        </item>
+        <item>photos|Pictures|
+            Stay smart~Smart phones have great cameras and plenty of sharing options. Save yourself some money by taking your own pictures.
+        </item>
+        <item>afterparty|After Party|
+            Stay In School~Many schools offer cheap, “official” after-parties. Convince your friends to save money by going to the school after-party, as long as you’re together any party will be fun.|
+            Head home~Have a small gathering at home of your closest friends. There are only a few more nights left in the school year so make sure to enjoy the moments while you can.
+        </item>
+    </string-array>
+</resources>

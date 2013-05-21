@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"	
+    android:orientation="vertical"
+    android:layout_width="fill_parent"	
+    android:layout_height="fill_parent" 
+    android:id="@+id/cameraparent">
+
+   	    <FrameLayout
+   	        android:id="@+id/preview"
+   	        android:layout_width="fill_parent"
+   	        android:layout_height="fill_parent"
+   	        android:layout_weight="1"
+   	        android:visibility="visible" >
+	
+   	    </FrameLayout>	
+     	    
+   	    <ImageButton
+   	        android:id="@+id/buttonClick"
+   	        android:layout_width="match_parent"
+   	        android:layout_height="wrap_content"
+   	        android:layout_gravity="center"
+   	        android:background="@android:color/transparent"
+   	        android:src="@drawable/take_photo_icon"
+   	        android:visibility="visible" >
+
+   	    </ImageButton>
+     	    
+   	    <ImageView
+   	        android:id="@+id/finalPreview"
+   	        android:layout_width="fill_parent"
+   	        android:layout_height="fill_parent"
+   	        android:layout_weight="1"
+   	        android:scaleType="fitXY"
+   	        android:visibility="gone" >
+	
+   	    </ImageView>
+
+   	    <LinearLayout
+   	        android:id="@+id/previewButtonGroup"
+   	        android:layout_width="match_parent"
+   	        android:layout_height="wrap_content"
+   	        android:gravity="center"
+   	        android:visibility="gone" >
+
+   	        <ImageButton
+   	            android:id="@+id/useButton"
+   	            android:layout_width="wrap_content"
+   	            android:layout_height="wrap_content"
+   	            android:onClick="onUseClick"
+   	            android:src="@drawable/save_photo_icon"
+   	            android:background="@android:color/transparent" />
+   	        
+   	        <ImageButton
+   	            android:id="@+id/discardButton"
+   	            android:layout_width="wrap_content"
+   	            android:layout_height="wrap_content"
+   	            android:onClick="onDiscardClick"
+   	            android:src="@drawable/delete_photo_icon"
+   	            android:background="@android:color/transparent" />
+
+   	    </LinearLayout>
+</LinearLayout>

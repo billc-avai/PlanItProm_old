@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="time_line_female">
+        <item >3~m|
+        	Find a date|
+        	Research dresses and fashion trends that suit you
+        </item>
+        <item >2~m|
+        	Buy/reserve Dress|
+        	Purchase tickets
+        </item>
+        <item >1~m|
+            Schedule makeup|
+            Schedule hair|
+            Schedule mani/pedi|
+            Organize after-party plans
+        </item>
+        <item >3~w|
+            Coordinate your group for pictures
+        </item>
+        <item >2~w|
+            Make final dress alterations|
+            Confirm all appointments
+        </item>
+        <item>1~w|
+            Order Your date’s boutonniere 
+        </item>
+        <item>1~d|
+            Pick up your date’s boutonniere|
+            Charge your phone|
+            Charge your camera
+        </item>
+        <item>0~d|
+            Relax and have fun 
+        </item>
+	</string-array>
+    
+    <string-array name="time_line_male">
+        <item >3~m|
+        	Find a date|
+        	Research transportation|
+        	Research restaurant options
+        </item>
+        <item >2~m|
+        	Buy/reserve tux|
+        	Purchase tickets
+        </item>
+        <item >1~m|
+            Finalize transportation plans|
+            Schedule haircut|
+            Organize after-party plans
+        </item>
+        <item >3~w|
+            Coordinate your group for pictures
+        </item>
+        <item >2~w|
+            Make dinner reservations|
+            Confirm all reservations and appointments
+        </item>
+        <item>1~w|
+            Order Your date’s corsage
+        </item>
+        <item>1~d|
+            Pick up your date’s corsage|
+            Wash your car|
+            Charge your phone|
+            Charge your camera
+        </item>
+        <item>0~d|
+            Relax and have fun 
+        </item>
+	</string-array>
+
+</resources>

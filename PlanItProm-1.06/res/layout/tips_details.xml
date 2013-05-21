@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tipsDetailParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TipsDetails" >
+
+    <RelativeLayout
+        android:id="@+id/tipDetailHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tipDetailHeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/tipDetailHeaderButton"
+            android:text="@string/title_activity_tips"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageButton
+            android:id="@+id/tipDetailHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="doHome"
+            android:src="@drawable/icon_home"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY" 
+            android:background="@android:color/transparent"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/TipsDetailImageBox"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_below="@id/tipDetailHeader" 
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp">
+
+        <ImageView
+            android:id="@+id/tipDetailImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tipsDetailsCategoryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/tipDetailListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TipsDetailImageBox"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null" >
+    </ListView>
+
+</RelativeLayout>

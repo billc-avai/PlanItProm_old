@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="budget_instructions">Instructions:\n\n Proms can quickly become very expensive if you don\'t have a spending plan in place.  Use this budget calculator to plan your expenses before shopping.  Then, while shopping, track your actual costs.  Keep your Budget Health Meter green; if you find yourself in red, you need to cut back on costs in other areas.\n\nTap on each item to see recommended budgets, credit calculations, and cost saving tips.  Enter your budgets and costs and check back to monitor your Budget Health Meter.</string>
+    <string name="budget_detail_instructions">Instructions:\n\n In order to avoid overspending, it\'s important to determine your budget for each item you\'ll need for prom.  A recommended budget is provided for your reference.  Before you go shopping, enter the amount you have budgeted for this item now.  And later, while shopping, track your actual cost in the boxes below. \n\n To see credit calculations and cost saving tips tap on the buttons at the bottom of the screen.</string>
+    <string name="cost_of_credit_instructions">Instructions:\n\n Enter the price of your item and your card\'s APR (annual percentage rate) below to determine the true costs of buying on credit."</string>
+    <string name="privacy_policy">Visa Practical Money Skills for Life – Plan’It Prom App\n\n
+								Privacy Policy\n\n
+								**This privacy policy was last updated March 14, 2013.\n\n
+								Welcome to a mobile application (the “App”) operated by Visa U.S.A. Inc. (“Visa,” “we,” or “us”).  This Privacy Policy sets forth our policy with respect to information collected from or provided by App users (“you” or “your”).  Please read this Privacy Policy as it contains important information on how we collect, use and disclose your information when you use the App.\n\n
+								Please note that other Visa services, websites, applications and promotions may have different privacy practices.  In those cases, we will display a different privacy policy that applies when you interact with those services, websites, promotions or applications.\n\n 
+								Information we collect\n\n
+								The App does not collect or store Personal Information (information that can be used to identify you as an individual).\n\n
+								When you use the App, all information you provide to the App is stored locally within the App and on your device; it is not sent to Visa.  We may collect de-identified information about how many times the App has been downloaded.\n\n  
+								If you connect with the App through your Facebook account through the App, the App will collect your gender from your Facebook profile.  The App does not transmit any information to Visa.   \n\n
+								How we use information\n\n
+								The App uses information that you provide to the App – such as your name, gender, and event dates – to customize your experience with the App.  This information is stored locally on your device, and is not sent to Visa.\n\n 
+								How we share information\n\n
+								Visa may share aggregate information about the number of people who have downloaded the App, but does not otherwise share any information about your use of the App. \n\n
+								Third-party services\n\n
+								This Privacy Policy does not address the privacy, information or other practices of third party services, such as Facebook, who you may choose to connect with through this App (“Third Party Sites”).  The inclusion of a link on the App to a Third Party Site does not imply endorsement of the Third Party Sites by Visa.  Visa is not responsible for the collection, usage and disclosure policies and practices (including the data security practices) of the Third Party Sites.\n\n
+								Please note that any information, including pictures, you post or share with others through Third Party Sites may be seen by other people depending on your privacy settings for those Third Party Sites.  \n\n
+								Changes to this privacy policy\n\n
+								We reserve the right to update or modify this Privacy Policy at any time and from time to time by posting an updated privacy policy.  This Privacy Policy was last updated as of the date listed above.  Your continued use of the App after any changes or revisions to this Privacy Policy indicates your agreement with the terms of such revised Privacy Policy.\n\n 
+								Retention period\n\n
+								We will retain information collected for the period necessary to fulfill the purposes outlined in this policy unless a longer retention period is required or permitted by law.\n\n  
+								Use of the App by minors\n\n
+								The App is not directed to, and should not be used by individuals under the age of thirteen (13).\n\n  
+								How to contact Visa regarding your privacy concerns and questions\n\n
+								If you have questions or comments about our privacy practices, please email us at askvisausa@visa.com or write to us at: Visa U.S.A. Inc. P.O. Box 194607, San Francisco, CA 94119-4607 Attention: Global Privacy Office.  
+	</string>
+</resources>

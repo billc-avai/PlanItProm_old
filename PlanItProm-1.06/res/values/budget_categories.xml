@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="budget_categories_female">
+        <item >Dress|icon_dress|dress</item>
+		<item >Shoes|icon_shoes|shoes</item>
+		<item >Accessories|icon_accessories_her|accessories</item>
+		<item >Hair|icon_hair|hair</item>
+		<item >Makeup|icon_makeup|makeup</item>
+		<item >Mani/Pedi|icon_mani|mani</item>
+		<item >Boutonniere|icon_boutonniere|boutineer</item>
+		<item >Tickets|icon_tickets|tickets</item>
+		<item >Dinner|icon_dinner|dinner</item>
+		<item >Transportation|icon_transportation|transportation</item>
+		<item >Pictures|icon_photos|pictures</item>
+		<item >After Party|icon_afterparty|afterparty</item>
+		<item >Other|other|other</item>
+	</string-array>
+    
+    <array name="perc_values_female">
+		<item >0.29</item>
+		<item >0.09</item>
+		<item >0.08</item>
+		<item >0.08</item>
+		<item >0.08</item>
+		<item >0.05</item>
+		<item >0.03</item>
+		<item >0.03</item>
+		<item >0.08</item>
+		<item >0.10</item>
+		<item >0.06</item>
+		<item >0.03</item>
+		<item >0.00</item>
+    </array>
+    
+    <string-array name="budget_categories_male">
+        <item >Tux/Alterations|icon_tuxedo|tux</item>
+		<item >Shoes|icon_shoes_him|shoes</item>
+		<item >Accessories|icon_accessories_him|accessories</item>
+		<item >Haircut|icon_hair|haircut</item>
+		<item >Corsage|icon_corsage|corsage</item>
+		<item >Tickets|icon_tickets|tickets</item>
+		<item >Dinner|icon_dinner|dinner</item>
+		<item >Transportation|icon_transportation|transportation</item>
+		<item >Pictures|icon_photos|pictures</item>
+		<item >After Party|icon_afterparty|afterparty</item>
+		<item >Other|other|other</item>
+	</string-array>
+    
+    <array name="perc_values_male">
+        <item >0.23</item>
+		<item >0.09</item>
+		<item >0.09</item>
+		<item >0.05</item>
+		<item >0.03</item>
+		<item >0.07</item>
+		<item >0.14</item>
+		<item >0.17</item>
+		<item >0.09</item>
+		<item >0.04</item>
+		<item >0.00</item>
+    </array>
+    
+</resources>

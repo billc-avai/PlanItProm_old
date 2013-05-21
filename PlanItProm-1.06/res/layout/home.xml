@@ -1,0 +1,187 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    tools:context=".Home" >
+
+    <RelativeLayout
+        android:id="@+id/headerHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/homeHeaderTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:src="@drawable/logo_blue"/>
+
+        <ImageButton
+            android:id="@+id/homeHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:onClick="doSettings"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_settings" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/headerHome"
+        android:gravity="center_vertical" >
+
+	    <ImageButton
+	        android:id="@+id/homeBudgetButton"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginBottom="5dp"
+	        android:onClick="doBudget"
+	        android:background="@android:color/transparent" 
+	        android:scaleType="fitXY"/>
+	
+	    <ImageButton
+	        android:id="@+id/tips"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_below="@id/homeBudgetButton"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginBottom="5dp"
+	        android:onClick="doTips"
+	        android:background="@android:color/transparent"
+	        android:scaleType="fitXY"/>
+	
+	    <ImageButton
+	        android:id="@+id/timeline"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_below="@id/tips"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginBottom="5dp"
+	        android:onClick="doTimeline"
+	        android:background="@android:color/transparent"
+	        android:scaleType="fitXY"/>
+	
+	    <ImageButton
+	        android:id="@+id/photogallery"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_below="@id/timeline"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:onClick="doPhotoGallery"
+	        android:background="@android:color/transparent" 
+	        android:scaleType="fitXY"/>
+	
+	    <LinearLayout
+	        android:id="@+id/daysLeftGroup"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/photogallery"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginTop="20dp" >
+	
+	        <TextView
+		        android:id="@+id/eventDateText"
+		        android:layout_width="0dp"
+		        android:layout_weight="60"
+		        android:layout_height="wrap_content"
+		        android:text="@string/daysTilProm"
+		        android:textAppearance="?android:attr/textAppearanceMedium" 
+		        android:textColor="#ffffff"/>
+
+	        <EditText
+	            android:id="@+id/daysLeft"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="40"
+	            android:ems="10"
+	            android:inputType="numberDecimal" >
+
+	        </EditText>
+	
+	    </LinearLayout>
+
+	    <TextView
+	        android:id="@+id/budgetSpentText"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/daysLeftGroup"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginTop="10dp"
+	        android:gravity="center"
+	        android:text="Medium Text"
+	        android:textAppearance="?android:attr/textAppearanceMedium"
+	        android:textColor="#ffffff" />
+	
+	    <RelativeLayout
+	        android:id="@+id/budgetMeter"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dp"
+	        android:layout_below="@id/budgetSpentText"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_marginTop="10dp" >
+	
+	        <TextView
+	            android:id="@+id/homeBHMtext"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:gravity="center"
+	            android:text="@string/budget_health_meter"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="#ffffff" />
+	            
+	        <com.sevendesigns.planitprom.widgets.BudgetHealthMeter
+	            android:id="@+id/meter"
+	            android:layout_width="match_parent"
+	            android:layout_height="30dp"
+	            android:layout_marginLeft="10dp"
+	            android:layout_marginRight="5dp"
+	            android:layout_marginTop="10dp"
+	            android:layout_toRightOf="@id/homeBHMtext" />
+	        
+    	</RelativeLayout>
+
+	</RelativeLayout> 
+	
+    <TextView
+        android:id="@+id/privacyPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:onClick="showPrivacyPolicy"
+        android:text="@string/privacy"
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        android:textColor="#ffffff">
+       
+    </TextView>
+    
+</RelativeLayout>

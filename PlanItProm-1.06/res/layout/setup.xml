@@ -1,0 +1,272 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SetupParentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Setup" >
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/setupHeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/setupHeaderButton"
+            android:text="@string/title_activity_setup"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageButton
+            android:id="@+id/setupHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="doStartPlanning"
+            android:src="@drawable/icon_done" 
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/name"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textColor="#000000"/>
+
+    <EditText
+        android:id="@+id/nameEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameText"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:hint="@string/enter_name_hint"
+        android:maxLength="100" >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/budgetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameEntry"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/budget"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/budgetEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budgetText"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:hint="@string/enter_budget_hint"
+        android:inputType="number"
+        android:maxLength="4" />
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/promDateGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budgetEntry"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" 
+        android:paddingTop="7dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/eventDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/promDate"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/eventDateButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="doPickDate"
+            android:text="@string/enter_date" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/genderGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/promDateGroup"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" 
+        android:background="#ffffff"
+        android:layout_marginTop="5dp"
+        android:paddingTop="7dp">
+
+        <TextView
+            android:id="@+id/genderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/gender"
+            android:layout_marginLeft="10dp" 
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/genderButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:onClick="doPickGender"
+            android:text="@string/gender_default_value" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/integrationGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genderGroup"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" 
+        android:background="#ffffff"
+        android:paddingTop="7dp">
+
+        <TextView
+            android:id="@+id/calendarIntegrationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/integration"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"/>
+
+        <ToggleButton
+            android:id="@+id/integrationToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="doIntegration"
+            android:text="ToggleButton" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/themeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/integrationGroup"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"  
+        android:paddingBottom="10dp"
+        android:background="#ffffff" >
+
+            <TextView
+                android:id="@+id/selectTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/selectATheme"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:id="@+id/selectThemeButtonGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectTheme"
+                android:layout_centerHorizontal="true" >
+
+                <ImageButton
+                    android:id="@+id/theme1"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:onClick="doTheme1"
+                    
+                    android:src="@drawable/ic_launcher" 
+                    android:background="@android:color/transparent"/>
+
+                <ImageButton
+                    android:id="@+id/theme2"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:onClick="doTheme2"
+                    
+                    android:src="@drawable/ic_launcher" 
+                    android:background="@android:color/transparent"/>
+
+                <ImageButton
+                    android:id="@+id/theme3"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:onClick="doTheme3"
+                    
+                    android:src="@drawable/ic_launcher"
+                    android:background="@android:color/transparent" />
+
+                <ImageButton
+                    android:id="@+id/theme4"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:onClick="doTheme4"
+                    
+                    android:src="@drawable/ic_launcher" 
+                    android:background="@android:color/transparent"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/privacyPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:onClick="showPrivacyPolicy"
+        android:text="@string/privacy"
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        android:textColor="#ffffff">
+       
+    </TextView>
+</RelativeLayout>

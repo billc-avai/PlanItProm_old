@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/budgetParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Budget" >
+
+    <RelativeLayout
+        android:id="@+id/budgetHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/budgetHeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/budgetHeaderButton"
+            android:text="@string/title_activity_setup"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff" />
+
+        <ImageButton
+            android:id="@+id/budgetHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="doHome"
+            android:src="@drawable/icon_home" 
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"/>
+
+    </RelativeLayout>
+    
+     <RelativeLayout
+	        android:id="@+id/budgetMeter"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dp"
+	        android:layout_below="@id/budgetHeader"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_marginTop="10dp" >
+	
+	        <TextView
+	            android:id="@+id/budgetBHMtext"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:gravity="center"
+	            android:text="@string/budget_health_meter"
+	            android:textAppearance="?android:attr/textAppearanceMedium" 
+	            android:textColor="#000000"/>
+	            
+	        <com.sevendesigns.planitprom.widgets.BudgetHealthMeter
+	            android:id="@+id/budgetmeter"
+	            android:layout_width="match_parent"
+	            android:layout_height="30dp"
+	            android:layout_marginLeft="10dp"
+	            android:layout_marginRight="5dp"
+	            android:layout_marginTop="10dp"
+	            android:layout_toRightOf="@id/budgetBHMtext" />
+	        
+    	</RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/gridHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budgetMeter"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp" 
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/itemText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:text="@string/item"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/budgetedText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/budgeted"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tipText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:text="@string/actual"
+            android:textAppearance="?android:attr/textAppearanceSmall" 
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/budgetListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/budgetInstructionsText"
+        android:layout_below="@id/gridHeader" 
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/budgetInstructionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:onClick="showInstructions"
+        android:text="@string/instructions"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#000000" />
+    
+</RelativeLayout>

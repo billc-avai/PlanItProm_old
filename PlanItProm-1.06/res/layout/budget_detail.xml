@@ -1,0 +1,298 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/budgetDetailParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BudgetDetail" >
+
+	<RelativeLayout
+        android:id="@+id/budgetDetailHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/budgetDetailHeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/budgetDetailHeaderButton"
+            android:text="@string/empty"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageButton
+            android:id="@+id/budgetDetailHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="doDone"
+            android:src="@drawable/icon_done"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/budgetDetailTitleBox"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/budgetDetailHeader"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/categoryImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:src="@drawable/ic_launcher" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_launcher" />
+
+                <EditText
+                    android:id="@+id/recommendedSpendingEntry"
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/recommendedSpendingText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="right"
+                android:text="@string/recommended_spending"
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:textColor="#000000"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/budgetDetailBugetedReamaningBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/budgetDetailTitleBox"
+        android:orientation="horizontal" 
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            
+            	<TextView
+            	    android:id="@+id/budgetedTitle"
+            	    android:layout_width="match_parent"
+            	    android:layout_height="wrap_content"
+            	    android:layout_above="@+id/budgetedEntry"
+            	    android:gravity="center"
+            	    android:text="@string/budgeted"
+            	    android:textAppearance="?android:attr/textAppearanceMedium" 
+            	    android:textColor="#000000"/>
+
+                <EditText
+                    android:id="@+id/budgetedEntry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:inputType="number|numberDecimal"
+                    android:maxLength="4" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/totalRemainingText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:text="@string/total_budget_remaining"
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/totalRemainingEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/budgetDetailCostMerchantBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budgetDetailBugetedReamaningBox"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/costText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="@string/cost"
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/costEntry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:inputType="numberDecimal"
+                android:maxLength="7" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/merchantText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="@string/merchant"
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/merchantEntry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:maxLength="100" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/budgetInstructionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/budgetDetailsButtons"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:onClick="showInstructions"
+        android:text="@string/instructions"
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        android:textColor="#ffffff"/>
+    
+    <LinearLayout
+        android:id="@+id/budgetDetailsButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/calcButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:layout_marginLeft="5dp"
+            android:background="@android:color/transparent"
+            android:onClick="doCalc" />
+
+        <ImageButton
+            android:id="@+id/tipsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="doTips" />
+
+        <ImageButton
+            android:id="@+id/picButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="doPic"/>
+
+        <ImageButton
+            android:id="@+id/galleryButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="doGallery"
+            android:scaleType="fitXY" />
+        
+        <ImageButton
+            android:id="@+id/facebookButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="shareToFacebook"
+            android:src="@drawable/tabbar_icon_facebook"
+            android:layout_marginRight="5dp" />
+
+    </LinearLayout>
+
+    
+</RelativeLayout>

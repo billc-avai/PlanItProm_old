@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/introParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Intro" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="15"
+                android:layout_height="0dp" >
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="70"
+                android:layout_height="0dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/facebook_login" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true" 
+                    android:layout_marginBottom="10dp">
+                
+	                <TextView
+	                    android:id="@+id/setUpWithFacebook"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_centerHorizontal="true"
+	                    android:text="@string/setUpWithFacebook"
+	                    android:textAppearance="?android:attr/textAppearanceMedium"
+	                    android:textColor="#ffffff" />
+	
+	                <RadioButton
+	                    android:id="@+id/facebookYes"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_below="@id/setUpWithFacebook"
+	                    android:layout_centerHorizontal="true"
+	                    android:onClick="doFbYes"
+	                    android:text="@string/Yes"
+	                    android:textColor="#ffffff" />
+	
+	                <RadioButton
+	                    android:id="@+id/facebookNo"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_below="@id/facebookYes"
+	                    android:layout_centerHorizontal="true"
+	                    android:onClick="doFbNo"
+	                    android:text="@string/No"
+	                    android:textColor="#ffffff" />
+	                
+	        	</RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="15"
+                android:layout_height="0dp" >
+            </RelativeLayout>
+
+        </LinearLayout>
+        
+</RelativeLayout>
