@@ -249,7 +249,7 @@ public class ThemeManager
 	
 	public static Drawable GetCheckMarkUnselected(Context _context)
 	{
-		return _context.getResources().getDrawable(R.drawable.checkmark_gray);
+		return _context.getResources().getDrawable(R.drawable.checkmark_off);
 	}
 	
 	public static Drawable GetCheckMarkSelected(Context _context)

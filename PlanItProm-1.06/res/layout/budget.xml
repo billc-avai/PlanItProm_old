@@ -3,7 +3,7 @@
     android:id="@+id/budgetParent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Budget" >
+    tools:context=".Budget">
 
     <RelativeLayout
         android:id="@+id/budgetHeader"
@@ -34,41 +34,30 @@
 
     </RelativeLayout>
     
-     <RelativeLayout
-	        android:id="@+id/budgetMeter"
-	        android:layout_width="match_parent"
-	        android:layout_height="30dp"
-	        android:layout_below="@id/budgetHeader"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:layout_marginTop="10dp" >
-	
-	        <TextView
-	            android:id="@+id/budgetBHMtext"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_centerVertical="true"
-	            android:gravity="center"
-	            android:text="@string/budget_health_meter"
-	            android:textAppearance="?android:attr/textAppearanceMedium" 
-	            android:textColor="#000000"/>
-	            
-	        <com.sevendesigns.planitprom.widgets.BudgetHealthMeter
-	            android:id="@+id/budgetmeter"
-	            android:layout_width="match_parent"
-	            android:layout_height="30dp"
-	            android:layout_marginLeft="10dp"
-	            android:layout_marginRight="5dp"
-	            android:layout_marginTop="10dp"
-	            android:layout_toRightOf="@id/budgetBHMtext" />
-	        
-    	</RelativeLayout>
-
+    <com.sevendesigns.planitprom.widgets.BudgetHealthWidget
+	     android:id="@+id/budgetHealthWidget"
+	     android:layout_below="@id/budgetHeader"
+	     android:layout_centerHorizontal="true"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_margin="10dp"
+    />
+    
+    <TextView
+        android:id="@+id/budgetListTip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budgetHealthWidget"
+	    android:padding="10dp"
+	    android:textColor="#ffffff" 
+	    android:text="@string/budget_list_tip"      
+        />
+    
     <LinearLayout
         android:id="@+id/gridHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/budgetMeter"
+        android:layout_below="@id/budgetListTip"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp" 
         android:layout_marginTop="30dp">
@@ -78,6 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="40"
+            android:layout_marginLeft="30dp"
             android:text="@string/item"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"

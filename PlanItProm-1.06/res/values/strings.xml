@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <string name="total_spent">Total Spent</string>
+    <string name="budgeted_to_date">Budgeted To Date</string>
+    <string name="total_budget">Total Budget</string>
 
     <string name="empty"></string>
     <string name="app_name">Plan\'it Prom</string>
@@ -13,7 +17,7 @@
     <string name="selectATheme">Select a Theme</string>
     <string name="title_activity_setup">Setup</string>
     <string name="name">Name</string>
-    <string name="budget">Total Prom Budget</string>
+    <string name="budget">Your Budget</string>
     <string name="promDate">Prom Date</string>
     <string name="gender">Gender</string>
     <string name="integration">Calendar Integration</string>
@@ -21,10 +25,13 @@
     <string name="title_activity_home">Home</string>
     <string name="title_activity_budget">Budget</string>
     <string name="daysTilProm">Days Til Prom</string>
+    <string name="budget_list_tip">Uncheck items that you will not include in your budget</string>
     <string name="item">Item</string>
+    <string name="item_name">Item Name</string>
     <string name="budgeted">Budgeted</string>
     <string name="actual">Actual</string>
     <string name="cost">Cost</string>
+    <string name="accessories_subitem">Accessories\nSub-Item:</string>
     <string name="instructions">Instructions</string>
     <string name="title_activity_calculator">Calculator</string>
     <string name="price">Price</string>
@@ -32,6 +39,8 @@
     <string name="discount">Discount/Coupon</string>
     <string name="tip">Tip</string>
     <string name="total">Total Cost</string>
+    <string name="title_activity_add_subitem">Add Sub-Item</string>
+    <string name="title_activity_subitem_list">Sub-Item List</string>
     <string name="title_activity_budget_detail">BudgetDetail</string>
     <string name="title_activity_budget_item_detail">BudgetItemDetail</string>
     <string name="recommended_spending">Recommended Spending</string>
@@ -52,7 +61,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="enter_name_hint">Enter Your Name</string>
-    <string name="enter_budget_hint">Enter Your Overall Prom Budget</string>
+    <string name="enter_budget_hint">Enter Total Prom Spending Limit</string>
     <string name="enter_date">Select a date</string>
     <string name="gender_default_value">TBD</string>
     <string name="pref_file_name">budget_app_saved_pref_file</string>

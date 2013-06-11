@@ -1,25 +1,30 @@
 package com.sevendesigns.planitprom;
 
-import com.flurry.android.FlurryAgent;
-import com.sevendesigns.planitprom.textwatcher.BudgetedFieldWatcher;
-import com.sevendesigns.planitprom.utilities.ThemeManager;
-import com.sevendesigns.planitprom.utilities.Utils;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
+import com.sevendesigns.planitprom.textwatcher.BudgetedFieldWatcher;
+import com.sevendesigns.planitprom.utilities.ThemeManager;
+import com.sevendesigns.planitprom.utilities.Utils;
+import com.sevendesigns.planitprom.widgets.BudgetHealthWidget;
+
 public class BudgetDetail extends Activity
 {
 
+	String mCategoryName;
+	
 	TextView m_itemName;
 	
-	EditText m_recommendedSpending;
+	TextView m_recommendedSpending;
 	EditText m_budgeted;
 	EditText m_totalBudgetRemaining;
 	EditText m_cost;
@@ -35,6 +40,8 @@ public class BudgetDetail extends Activity
 	ImageButton m_gallery;
 	ImageButton m_facebook;
 	
+	BudgetHealthWidget mBudgetHealthWidget;
+	
 	private static BudgetDetail Instance;
 	
 	@Override
@@ -46,13 +53,34 @@ public class BudgetDetail extends Activity
 		setContentView(R.layout.budget_detail);
 		
 		m_id = getIntent().getIntExtra("id", 0);
-		
-		m_itemName = (TextView)findViewById(R.id.budgetDetailHeaderText);
-		m_itemName.setText(getIntent().getStringExtra("name"));
-			
+		mCategoryName = getIntent().getStringExtra("name");
 		m_imageName = getIntent().getStringExtra("image");
 		
-		m_recommendedSpending = (EditText)findViewById(R.id.recommendedSpendingEntry); 
+		
+		m_itemName = (TextView)findViewById(R.id.budgetDetailHeaderText);
+		m_itemName.setText(mCategoryName);
+			
+		
+		boolean enableSubItems=false;
+		
+		if(App.Gender.equalsIgnoreCase("male")){
+			if(mCategoryName.equalsIgnoreCase("accessories") || 
+					mCategoryName.equalsIgnoreCase("other")){
+				enableSubItems=true;
+			}
+		}else if(App.Gender.equalsIgnoreCase("female")){
+			if(mCategoryName.equalsIgnoreCase("accessories") || 
+					mCategoryName.equalsIgnoreCase("dress") ||
+					mCategoryName.equalsIgnoreCase("other")){
+				enableSubItems=true;
+			}
+		}
+		
+		if(enableSubItems){
+			setupSubItemControls();
+		}
+		
+		m_recommendedSpending = (TextView)findViewById(R.id.recommendedSpending); 
 		m_budgeted = (EditText)findViewById(R.id.budgetedEntry);
 		m_totalBudgetRemaining = (EditText)findViewById(R.id.totalRemainingEntry);
 		m_cost = (EditText)findViewById(R.id.costEntry);
@@ -64,16 +92,17 @@ public class BudgetDetail extends Activity
 		m_gallery = (ImageButton)findViewById(R.id.galleryButton);
 		m_facebook = (ImageButton)findViewById(R.id.facebookButton);
 		
+		mBudgetHealthWidget = (BudgetHealthWidget)findViewById(R.id.budgetHealthWidget);
+		
+		m_totalBudgetRemaining.setText(Integer.toString(App.Budget-App.BudgetedToDate));
+   		m_totalBudgetRemaining.setKeyListener(null);
+		
 		Integer budgeted = getIntent().getIntExtra("budgeted", -1);
 		Double actual = getIntent().getDoubleExtra("actual", -1.0);
 
 		if (budgeted != -1)
 		{
 			m_budgeted.setText(budgeted.toString());
-			
-			Integer remain = App.Budget - budgeted;
-			
-			m_totalBudgetRemaining.setText(remain.toString());
 		}
 		
 		if (actual != -1)
@@ -83,9 +112,8 @@ public class BudgetDetail extends Activity
    		
 		recommended = getIntent().getFloatExtra("recomended", 0.0f);
 		Integer recTemp = (int) (App.Budget * recommended);
-		m_recommendedSpending.setText(recTemp.toString());
+		m_recommendedSpending.setText(getResources().getString(R.string.recommended_spending)+": $"+recTemp.toString());
 		
-   		m_recommendedSpending.setKeyListener(null);
    		m_totalBudgetRemaining.setKeyListener(null);
    		
    		if (!App.BudgetDetailsInstructionsSeen)
@@ -111,21 +139,56 @@ public class BudgetDetail extends Activity
    		ThemeManager.SetFont(this, m_merchant);
    		
    		ThemeManager.SetFont(this, (TextView)findViewById(R.id.budgetDetailHeaderText));
-   		ThemeManager.SetFont(this, (TextView)findViewById(R.id.recommendedSpendingText));
+   		ThemeManager.SetFont(this, (TextView)findViewById(R.id.recommendedSpending));
    		ThemeManager.SetFont(this, (TextView)findViewById(R.id.budgetedTitle));
    		ThemeManager.SetFont(this, (TextView)findViewById(R.id.totalRemainingText));
    		ThemeManager.SetFont(this, (TextView)findViewById(R.id.costText));
    		ThemeManager.SetFont(this, (TextView)findViewById(R.id.merchantText));
    		ThemeManager.SetFont(this, (TextView)findViewById(R.id.budgetInstructionsText));
    		
-   		ThemeManager.SetLogo(this, (ImageView)findViewById(R.id.logo));
-   		
    		setImage();
    		
    		Instance = this;
+   		
+   		
 
 	}
 	
+	private void setupSubItemControls() {
+		View subitemControls = findViewById(R.id.subitemControls);
+		subitemControls.setVisibility(View.VISIBLE);
+		
+		Button addSubItemButton = (Button)findViewById(R.id.addSubItemButton);
+		
+		addSubItemButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(BudgetDetail.this, SubItemInputActivity.class);
+				intent.putExtra("parentId", m_id);
+				intent.putExtra("image",m_imageName);
+				intent.putExtra("categoryName", mCategoryName);
+				startActivity(intent);
+			}
+		});
+		
+		Button viewSubItemListButton = (Button)findViewById(R.id.viewSubItemListButton);
+		
+		viewSubItemListButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(BudgetDetail.this, SubItemListActivity.class);
+				intent.putExtra("parentId", m_id);
+				intent.putExtra("image",m_imageName);
+				intent.putExtra("categoryName", mCategoryName);
+				startActivity(intent);
+			}
+		});
+	}
+
 	@Override
 	public void onBackPressed()
 	{
@@ -186,6 +249,7 @@ public class BudgetDetail extends Activity
 	{
 		updateCategoryInfo();
 		Intent next = new Intent(this, Calculator.class);
+		next.putExtra("cost", m_cost.getText().toString());
 		startActivity(next);
 	}
 	
@@ -237,7 +301,9 @@ public class BudgetDetail extends Activity
 	public void onResume() 
 	{
 	    super.onResume();
+		refreshBudgetHealth();
 	}
+	
 
 	@Override
 	public void onPause() 
@@ -263,5 +329,10 @@ public class BudgetDetail extends Activity
 	{
 		super.onStop();		
 		FlurryAgent.onEndSession(this);
+	}
+	
+	public void refreshBudgetHealth(){
+		mBudgetHealthWidget.refreshData();
+		mBudgetHealthWidget.invalidate();
 	}
 }

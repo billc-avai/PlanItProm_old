@@ -10,7 +10,7 @@ public class DatabaseAccessHelper extends SQLiteOpenHelper
 	
 	public DatabaseAccessHelper(Context context) 
 	{
-		super(context, "PlanItPromDatabase", null, 1);
+		super(context, "PlanItPromDatabase", null, 3);
 		m_context = context;
 	}
 
@@ -26,7 +26,9 @@ public class DatabaseAccessHelper extends SQLiteOpenHelper
 				+ "Budgeted INTEGER, "
 				+ "Actual REAL, "
 				+ "Merchant TEXT, "
-				+ "RecommendedSpendingPercent REAL);");
+				+ "RecommendedSpendingPercent REAL, "
+				+ "Active INTEGER, "
+				+ "ParentId INTEGER);");
 		
 		db.execSQL("CREATE TABLE " 
 				+ "TimeLineItems ("

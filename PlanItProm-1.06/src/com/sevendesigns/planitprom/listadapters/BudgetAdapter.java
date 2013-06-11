@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 
 import com.sevendesigns.planitprom.App;
+import com.sevendesigns.planitprom.Budget;
 import com.sevendesigns.planitprom.BudgetDetail;
 import com.sevendesigns.planitprom.R;
 import com.sevendesigns.planitprom.data.BudgetCategoryItem;
@@ -22,12 +24,19 @@ import com.sevendesigns.planitprom.utilities.ThemeManager;
 public class BudgetAdapter extends BaseAdapter
 {
 	Context m_context;
+	Budget mBudgetActivity;
 	ArrayList<BudgetCategoryItem> m_data;
 	
     public BudgetAdapter(Activity _context) 
     {
         m_context = _context;
         m_data = App.getBudgetCategoryItems();
+        
+        try{
+        	mBudgetActivity = (Budget)m_context;
+        }catch(ClassCastException e){
+        	e.printStackTrace();
+        }
     }
 
 	@Override
@@ -51,6 +60,7 @@ public class BudgetAdapter extends BaseAdapter
     @Override
 	public View getView(int _position, View _convertView, ViewGroup _parent)
     {
+    	final int position = _position;
     	final BudgetCategoryItem item = m_data.get(_position);
     	
     	View view;
@@ -65,7 +75,7 @@ public class BudgetAdapter extends BaseAdapter
 			view = _convertView;
 		}
     	
-    	ImageButton category = (ImageButton)view.findViewById(R.id.budgetCategoryButton);
+    	final ImageButton category = (ImageButton)view.findViewById(R.id.budgetCategoryButton);
     	EditText budgeted = (EditText)view.findViewById(R.id.budgetedEntry);
         EditText actual = (EditText)view.findViewById(R.id.actualEntry);
         
@@ -107,6 +117,34 @@ public class BudgetAdapter extends BaseAdapter
            	}
         });
         
+    	ToggleButton checkBox = (ToggleButton)view.findViewById(R.id.budgetCategoryCheckbox);
+		checkBox.setChecked(item.Active);
+//    	category.setAlpha(new Float(0x87));
+        
+    	checkBox.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View view) {
+				ToggleButton checkBox = (ToggleButton)view;  
+				
+				boolean checked = checkBox.isChecked();;
+				m_data.get(position).Active=checked;
+				
+//				if(isChecked){
+//					category.setAlpha(new Float(0xFF));
+//				}else{
+//					category.setAlpha(new Float(0x87));
+//				}
+				
+				App.updateBudgetActiveStatus(item.CategoryId,checked);
+				
+				if(mBudgetActivity!=null){
+					mBudgetActivity.refreshBudgetHealth();
+				}
+			}
+		});
+    	
+    	
         ThemeManager.SetFont(m_context, budgeted);
         ThemeManager.SetFont(m_context, actual);
         

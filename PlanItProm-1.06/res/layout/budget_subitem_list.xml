@@ -1,0 +1,160 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/budgetDetailParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BudgetDetail"
+    android:background="@drawable/bg_blue" >
+
+	<RelativeLayout
+        android:id="@+id/budgetDetailHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/budgetDetailHeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/budgetDetailHeaderButton"
+            android:text="@string/title_activity_subitem_list"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageButton
+            android:id="@+id/budgetDetailHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="doDone"
+            android:src="@drawable/icon_done"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content" 
+       	android:layout_below="@id/budgetDetailHeader"
+       	android:layout_above="@+id/budgetDetailsButtons"
+       	android:paddingBottom="5dp"
+        >
+            
+		<com.sevendesigns.planitprom.widgets.BudgetHealthWidget 
+	        android:id="@+id/budgetHealthWidget"
+		    android:layout_centerHorizontal="true"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_margin="10dp"
+	  		/>
+            
+	    <LinearLayout
+	        android:id="@+id/body"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" 
+	        android:padding="10dp"
+	        android:layout_below="@id/budgetHealthWidget"
+	        >
+	
+	        <RelativeLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginBottom="10dp"
+	             >
+	
+	            <TextView
+	                android:id="@+id/categoryName"
+	                android:layout_width="150dp"
+	                android:layout_height="wrap_content"
+	                android:gravity="left"
+	                android:layout_alignParentLeft="true"
+	                android:text="@string/accessories_subitem"
+	                android:textAppearance="?android:attr/textAppearanceMedium"
+	                android:textColor="#000000" />
+	
+		        <ImageView
+		            android:id="@+id/categoryImage"	
+		            android:layout_width="wrap_content"
+		            android:layout_height="50dp"
+		            android:layout_alignParentRight="true"
+		            android:src="@drawable/ic_launcher" />
+	        
+	        </RelativeLayout>
+	        
+	        <ListView 
+	            android:id="@android:id/list"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:cacheColorHint="#00000000"
+	            >
+	            
+	        </ListView>
+	        
+    	</LinearLayout>
+
+			    
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/budgetDetailsButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/calcButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:layout_marginLeft="5dp"
+            android:background="@android:color/transparent"
+            android:onClick="doCalc" />
+
+        <ImageButton
+            android:id="@+id/tipsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="doTips" />
+
+        <ImageButton
+            android:id="@+id/picButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="doPic"/>
+
+        <ImageButton
+            android:id="@+id/galleryButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="doGallery"
+            android:scaleType="fitXY" />
+        
+        <ImageButton
+            android:id="@+id/facebookButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:onClick="shareToFacebook"
+            android:src="@drawable/tabbar_icon_facebook"
+            android:layout_marginRight="5dp" />
+
+    </LinearLayout>
+    
+</RelativeLayout>

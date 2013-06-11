@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/body"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical" 
+     android:padding="10dp"
+     >
+
+     <LinearLayout
+         android:id="@+id/nameInputSection"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+          >
+
+         <TextView
+             android:id="@+id/itemNameTitle"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="40"
+             android:text="@string/item_name"
+             android:textAppearance="?android:attr/textAppearanceMedium" 
+             android:textColor="#000000"/>
+
+         <EditText
+             android:id="@+id/itemNameEntry"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="60"
+             android:inputType="text"
+             android:maxLength="20" 
+             android:focusable="false"
+             />
+     </LinearLayout>
+     
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" >
+
+         <TextView
+             android:id="@+id/budgetedTitle"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="40"
+             android:text="@string/budgeted"
+             android:textAppearance="?android:attr/textAppearanceMedium" 
+             android:textColor="#000000"/>
+
+         <EditText
+             android:id="@+id/budgetedEntry"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="60"
+             android:inputType="numberDecimal"
+             android:maxLength="7" 
+             android:focusable="false"
+             />
+     </LinearLayout>
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" >
+
+         <TextView
+             android:id="@+id/costText"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="40"
+             android:text="@string/cost"
+             android:textAppearance="?android:attr/textAppearanceMedium" 
+             android:textColor="#000000"/>
+
+         <EditText
+             android:id="@+id/costEntry"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="60"
+             android:inputType="numberDecimal"
+             android:maxLength="7" 
+             android:focusable="false"
+             />
+
+     </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" >
+
+         <TextView
+             android:id="@+id/merchantText"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="40"
+             android:text="@string/merchant"
+             android:textAppearance="?android:attr/textAppearanceMedium" 
+             android:textColor="#000000"/>
+
+         <EditText
+             android:id="@+id/merchantEntry"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="60"
+             android:maxLength="100"
+             android:focusable="false"
+              />
+
+     </LinearLayout>
+	     
+</LinearLayout>

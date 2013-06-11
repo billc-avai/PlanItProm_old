@@ -3,6 +3,13 @@ package com.sevendesigns.planitprom;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import android.app.Activity;
+import android.app.Application;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 
 import com.sevendesigns.planitprom.data.BudgetCategoryItem;
 import com.sevendesigns.planitprom.data.ImageInfo;
@@ -15,12 +22,6 @@ import com.sevendesigns.planitprom.database.DatabaseAccess;
 import com.sevendesigns.planitprom.utilities.ThemeManager;
 import com.sevendesigns.planitprom.utilities.ThemeManager.Theme;
 import com.sevendesigns.planitprom.utilities.Utils;
-
-import android.app.Activity;
-import android.app.Application;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.TypedArray;
 
 public class App extends Application
 {
@@ -37,6 +38,7 @@ public class App extends Application
 	public static String Gender;
 	public static Integer Budget;
 	public static Float BudgetSpent;
+	public static Integer BudgetedToDate;
 	public static boolean PreviouslySetup;
 	public static boolean FinishedSetup = false;
 	public static boolean DoCalendarIntegration = false;
@@ -46,6 +48,8 @@ public class App extends Application
 	public static boolean CostOfCreditInstructionsSeen = false;
 	
 	public static boolean UseFacebook = false;
+
+	private static double m_budgetHealthPercentage;
 	
 	public void onCreate() 
     {
@@ -79,6 +83,7 @@ public class App extends Application
 		
 		Budget = m_settings.getInt("Budget", 0);
 		BudgetSpent = m_settings.getFloat("BudgetSpent", 0.0f);
+		BudgetedToDate = m_settings.getInt("BudgetedToDate", 0);
 		
 		long time = m_settings.getLong("EventDate", Calendar.getInstance().getTimeInMillis());
 		EventDate.setTimeInMillis(time);
@@ -96,7 +101,7 @@ public class App extends Application
 		{
 			m_budgetCategoryItems = m_dbAccess.getBudgetCategoryItems();
 			m_tipsData = LoadTipsData();
-			updateBudgetSpent();
+			updateBudgetData();
 		}
 	}
 		
@@ -501,8 +506,26 @@ public class App extends Application
 	{
 		m_dbAccess.updateCategory(_id, _budgeted, _actual, _merchant);
 		m_budgetCategoryItems = m_dbAccess.getBudgetCategoryItems();
-		updateBudgetSpent();
+		updateBudgetData();
 	}
+	
+	public static void addCategorySubItem(int categoryId, BudgetCategoryItem subItem){
+		m_dbAccess.addCategorySubItem(categoryId, subItem);
+		updateBudgetData();
+	}
+	
+	public static List<BudgetCategoryItem> getSubItems(int parentId){
+		return m_dbAccess.getSubItems(parentId);
+	}
+	
+	public static void updateBudgetActiveStatus(int _id, boolean _active)
+	{
+		m_dbAccess.updateCategoryActiveStatus(_id, _active);
+		m_budgetCategoryItems = m_dbAccess.getBudgetCategoryItems();
+		updateBudgetData();
+	}
+	
+	
 	
 	public static ArrayList<TipsData> getTipsData()
 	{
@@ -986,32 +1009,56 @@ public class App extends Application
 		return m_dbAccess.getGalleryItemByImageId(_imageId);
 	}
 	
-	public static Double getBudgetHealth()
-	{
-		Double budgetHealthSum = 0.0;
+	public static double getBudgetHealth(){
+		return m_budgetHealthPercentage;
+	}
+	
+	public static void updateBudgetData(){
+		double budgetHealthSum = 0.0;
 		DecimalFormat format = new DecimalFormat("#.##");
 		
-		for (int i = 0; i < m_budgetCategoryItems.size(); i++)
-		{
-			BudgetCategoryItem item = m_budgetCategoryItems.get(i);
+		float budgetSpentSum=0.0f;
+		int budgetedToDateSum=0;
+		
+		for (int i = 0; i < m_budgetCategoryItems.size(); i++){
 			
-			if ((item.Actual != -1) && (item.Budgeted != -1))
-			{
-				Double actual = item.Actual;
+			BudgetCategoryItem item = m_budgetCategoryItems.get(i);
+			if(!item.Active) continue;
+			
+			Double actual = item.Actual;
+			Integer budgeted = item.Budgeted;
+			
+			if (actual > 0){
+				budgetSpentSum+=actual.floatValue();
+			}
+			
+			if (budgeted > 0){
+				budgetedToDateSum+=budgeted.intValue();
+			}
+			
+			if ((actual != -1) && (budgeted != -1)){
 
-				if (actual > 0)
-				{
-					Double itemPercent = (Double) (actual / (double)Budget);
-					Double delta = itemPercent - item.RecommendedSpendingPercent;
+				if (actual > 0){
+					
+					double itemPercent = (double) (actual / (double)Budget);
+					double delta = itemPercent - item.RecommendedSpendingPercent;
 					
 					delta = Double.parseDouble(format.format(delta));
-					
 					
 					budgetHealthSum += delta;
 				}
 			}
 		}
 		
-		return budgetHealthSum;
+		m_budgetHealthPercentage= budgetHealthSum;
+		BudgetSpent = budgetSpentSum;
+		BudgetedToDate = budgetedToDateSum;
+		
+		SharedPreferences.Editor editor = m_settings.edit();
+		
+		editor.putFloat("BudgetSpent", BudgetSpent);
+		editor.putInt("BudgetedToDate", BudgetedToDate);
+		
+		editor.commit();
 	}
 }

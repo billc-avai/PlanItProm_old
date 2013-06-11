@@ -1,24 +1,25 @@
 package com.sevendesigns.planitprom;
 
-import com.flurry.android.FlurryAgent;
-import com.sevendesigns.planitprom.utilities.ThemeManager;
-import com.sevendesigns.planitprom.utilities.Utils;
-import com.sevendesigns.planitprom.widgets.BudgetHealthMeter;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.flurry.android.FlurryAgent;
+import com.sevendesigns.planitprom.utilities.ThemeManager;
+import com.sevendesigns.planitprom.utilities.Utils;
+import com.sevendesigns.planitprom.widgets.BudgetHealthMeter;
+import com.sevendesigns.planitprom.widgets.BudgetHealthWidget;
 
 public class Home extends Activity
 {
 	TextView m_amountRemaning;
 	EditText m_daysLeft; 
 	
-	BudgetHealthMeter m_meter;
+	BudgetHealthWidget mBudgetHealthWidget;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -28,7 +29,7 @@ public class Home extends Activity
 		
 		m_amountRemaning = (TextView)findViewById(R.id.budgetSpentText);
 		m_daysLeft = (EditText)findViewById(R.id.daysLeft);
-		m_meter = (BudgetHealthMeter)findViewById(R.id.meter);
+		mBudgetHealthWidget = (BudgetHealthWidget)findViewById(R.id.budgetHealthWidget);
 		
 		m_daysLeft.setKeyListener(null);
 		
@@ -51,7 +52,7 @@ public class Home extends Activity
 		setUpDaysTilEvent();
 		setUpBudgetRemaining();
 		
-		m_meter.setHealthInfo(App.getBudgetHealth());
+		mBudgetHealthWidget.refreshData();
 	}
 
 	public void doBudget(View _view)

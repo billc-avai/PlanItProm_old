@@ -1,10 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Home"
     android:id="@+id/homeParent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    tools:context=".Home" >
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true" 
+    >
 
     <RelativeLayout
         android:id="@+id/headerHome"
@@ -32,14 +34,24 @@
             android:onClick="doSettings"
             android:scaleType="fitXY"
             android:src="@drawable/icon_settings" />
-
-    </RelativeLayout>
+   	</RelativeLayout>
+   	
     
+    <com.sevendesigns.planitprom.widgets.BudgetHealthWidget
+	     android:id="@+id/budgetHealthWidget"
+	     android:layout_below="@id/headerHome"
+	     android:layout_centerHorizontal="true"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_margin="10dp"
+    />
+   	
     <RelativeLayout
+        android:id="@+id/summarySection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/headerHome"
+        android:layout_below="@id/budgetHealthWidget"
         android:gravity="center_vertical" >
 
 	    <ImageButton
@@ -135,36 +147,6 @@
 	        android:textAppearance="?android:attr/textAppearanceMedium"
 	        android:textColor="#ffffff" />
 	
-	    <RelativeLayout
-	        android:id="@+id/budgetMeter"
-	        android:layout_width="match_parent"
-	        android:layout_height="30dp"
-	        android:layout_below="@id/budgetSpentText"
-	        android:layout_marginLeft="5dp"
-	        android:layout_marginRight="5dp"
-	        android:layout_marginTop="10dp" >
-	
-	        <TextView
-	            android:id="@+id/homeBHMtext"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_centerVertical="true"
-	            android:gravity="center"
-	            android:text="@string/budget_health_meter"
-	            android:textAppearance="?android:attr/textAppearanceMedium"
-	            android:textColor="#ffffff" />
-	            
-	        <com.sevendesigns.planitprom.widgets.BudgetHealthMeter
-	            android:id="@+id/meter"
-	            android:layout_width="match_parent"
-	            android:layout_height="30dp"
-	            android:layout_marginLeft="10dp"
-	            android:layout_marginRight="5dp"
-	            android:layout_marginTop="10dp"
-	            android:layout_toRightOf="@id/homeBHMtext" />
-	        
-    	</RelativeLayout>
-
 	</RelativeLayout> 
 	
     <TextView
@@ -175,7 +157,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
         android:clickable="true"
         android:onClick="showPrivacyPolicy"
         android:text="@string/privacy"
@@ -185,3 +166,4 @@
     </TextView>
     
 </RelativeLayout>
+

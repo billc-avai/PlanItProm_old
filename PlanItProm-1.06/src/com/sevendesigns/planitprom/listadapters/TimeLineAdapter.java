@@ -1,34 +1,67 @@
 package com.sevendesigns.planitprom.listadapters;
 
 import java.util.ArrayList;
-
-import com.sevendesigns.planitprom.App;
-import com.sevendesigns.planitprom.R;
-import com.sevendesigns.planitprom.data.TimeLineItem;
-import com.sevendesigns.planitprom.data.TimeLineSubItem;
-import com.sevendesigns.planitprom.utilities.ThemeManager;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.sevendesigns.planitprom.App;
+import com.sevendesigns.planitprom.R;
+import com.sevendesigns.planitprom.TipsDetails;
+import com.sevendesigns.planitprom.data.TimeLineItem;
+import com.sevendesigns.planitprom.data.TimeLineSubItem;
+import com.sevendesigns.planitprom.data.TipsData;
+import com.sevendesigns.planitprom.utilities.ThemeManager;
 
 public class TimeLineAdapter extends BaseAdapter
 {
 	Context m_context;
 	ArrayList<TimeLineItem> m_data;
+	HashMap<String,TipsData> mTips;
 
     public TimeLineAdapter(Activity _context) 
     {
         m_context = _context;
         m_data = App.getTimeLineItems();
+        setupTipsData();
     }
+
+	private void setupTipsData() {
+		mTips = new HashMap<String,TipsData>();
+		ArrayList<TipsData> allTips= App.getTipsData();
+		
+		for(int i=0;i<m_data.size();i++){
+			TimeLineItem item = m_data.get(i);
+			
+			for(int j=0;j<item.SubItems.size();j++){
+				TimeLineSubItem subItem = item.SubItems.get(j);
+			
+				for(TipsData tip: allTips){
+					if(subItem.Body.toLowerCase().contains(tip.ImageName.toLowerCase())){
+						mTips.put(getTipKey(i,j),tip);
+						continue;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	private String getTipKey(int i, int j){
+		return Integer.toString(i)+"_"+Integer.toString(j);
+	}
 
 	@Override
 	public int getCount()
@@ -105,6 +138,24 @@ public class TimeLineAdapter extends BaseAdapter
 					}
 				}
 			});
+			
+			TipsData tip = mTips.get(getTipKey(_position, i));
+			if(tip!=null){
+				Button tipsButton = (Button)subView.findViewById(R.id.btn_tips);
+				tipsButton.setTag(tip);
+				tipsButton.setVisibility(View.VISIBLE);
+				
+				tipsButton.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(m_context, TipsDetails.class);
+		           		TipsDetails.item = (TipsData)v.getTag();
+		           		m_context.startActivity(intent);
+						
+					}
+				});
+			}
 			
 			view.addView(subView);
 		}

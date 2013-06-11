@@ -276,28 +276,9 @@ public class Setup extends Activity
 	
 	public void doStartPlanning(View _view)
 	{
-		m_name = m_nameEntry.getText().toString();
 		String budgetString = m_budgetEntry.getText().toString();
 		
-		if (m_name.length() == 0)
-		{
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage("Please enter a name")
-			.setCancelable(false)
-			.setPositiveButton("OK", new DialogInterface.OnClickListener() 
-			{
-				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
-					dialog.cancel();
-				}
-			})
-			.create()
-			.show();
-			
-			return;
-		}
-		
+	
 		if (budgetString.length() == 0)
 		{
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);

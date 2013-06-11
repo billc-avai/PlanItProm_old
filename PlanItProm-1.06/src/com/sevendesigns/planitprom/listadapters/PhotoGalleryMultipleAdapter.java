@@ -86,22 +86,33 @@ public class PhotoGalleryMultipleAdapter extends BaseAdapter
         	{
 	        	
 	        	ImageInfo info = App.getImageInfoByImageId(imageId);
-			    InputStream is;
-				is = m_context.openFileInput(info.FileName);
-		
-				BitmapFactory.Options options=new BitmapFactory.Options();
-				options.inSampleSize = 8;
-				
-				Bitmap rotated = BitmapFactory.decodeStream(is, null, options);
-				
-				is.close();
-				
-				Matrix matrix = new Matrix();
-		
-				matrix.postRotate(90);
-				rotated = Bitmap.createBitmap(rotated , 0, 0, rotated.getWidth(), rotated.getHeight(), matrix, true);
+	        	Bitmap rotated=null;
+	        	
+	        	if(info.FileName.contains("\\") || info.FileName.contains("/")){
+	        		BitmapFactory.Options options=new BitmapFactory.Options();
+					options.inSampleSize = 8;
+					
+					rotated = BitmapFactory.decodeFile(info.FileName, options);
+					
+	        	}else{
+				    InputStream is;
+					is = m_context.openFileInput(info.FileName);
+			
+					BitmapFactory.Options options=new BitmapFactory.Options();
+					options.inSampleSize = 8;
+					
+					rotated = BitmapFactory.decodeStream(is, null, options);
+					
+					is.close();
+					
+					Matrix matrix = new Matrix();
+					
+					matrix.postRotate(90);
+					rotated = Bitmap.createBitmap(rotated , 0, 0, rotated.getWidth(), rotated.getHeight(), matrix, true);
+	        	}
 				
 				Holder.imageView.setImageBitmap(rotated);
+        	
 			}
 		}
 		catch (FileNotFoundException e)

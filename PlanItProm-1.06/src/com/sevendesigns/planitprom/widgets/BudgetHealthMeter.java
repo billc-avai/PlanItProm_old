@@ -76,11 +76,6 @@ public class BudgetHealthMeter extends View
 		{
 			location = 0;
 		}
-			
-		
-		
-		
-		
 		
 		if (location >=  m_TotalWidth)
 		{

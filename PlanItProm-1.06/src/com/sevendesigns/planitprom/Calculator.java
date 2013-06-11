@@ -44,6 +44,9 @@ public class Calculator extends Activity
 		m_percentOff = true;
 		m_amountOff = false;
 		
+		String cost = getIntent().getStringExtra("cost");
+		if(cost!=null) m_price.setText(cost);
+		
 		ThemeManager.SetBackgroundImage(this, (View)findViewById(R.id.calculatorParent), false);
 		ThemeManager.SetHeader(this, findViewById(R.id.calcHeader), false);
 		
@@ -141,6 +144,16 @@ public class Calculator extends Activity
 	public void doCostOfCredit(View _view)
 	{
 		Intent next = new Intent(this, CostOfCredit.class);
+		
+		String cost="";
+		
+		if(m_total.getText().length()>0){
+			cost = m_total.getText().toString(); 
+		}else if( m_price.getText().length()>0){
+			cost=m_price.getText().toString();
+		}
+		
+		next.putExtra("cost", cost);
 		startActivity(next);
 	}
 	

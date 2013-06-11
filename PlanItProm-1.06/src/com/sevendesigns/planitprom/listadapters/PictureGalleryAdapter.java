@@ -36,6 +36,11 @@ public class PictureGalleryAdapter extends BaseAdapter
         m_data = App.getBudgetCategoryItems();
     }
 
+    public ArrayList<BudgetCategoryItem> getData(){
+    	return m_data;
+    }
+    
+    
 	@Override
 	public int getCount()
 	{
@@ -70,12 +75,14 @@ public class PictureGalleryAdapter extends BaseAdapter
 		//TextView title = (TextView) view.findViewById(R.id.title);
 		
 		//title.setText(item.Name);
-		toggle.setText(item.Name);
+		
 		imageGallery.setVisibility(View.GONE);
 		
 		GalleryAdapter adapter = new GalleryAdapter(m_context, m_metrics, item.CategoryId, m_returnToCaller);
 		
 		imageGallery.setAdapter(adapter);
+		
+		toggle.setText(item.Name+" ("+adapter.getCount()+")");
 		
 		showing.setText("false");
 		

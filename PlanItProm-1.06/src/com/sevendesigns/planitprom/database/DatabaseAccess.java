@@ -30,9 +30,9 @@ public class DatabaseAccess
 		ArrayList<BudgetCategoryItem> items = new ArrayList<BudgetCategoryItem>();
 		
 		SQLiteDatabase db = m_helper.getReadableDatabase();
-		String[] columns = new String[] { "CategoryId", "Name", "Image", "ListImage", "Budgeted", "Actual", "Merchant", "RecommendedSpendingPercent"};
+		String[] columns = new String[] { "CategoryId", "Name", "Image", "ListImage", "Budgeted", "Actual", "Merchant", "RecommendedSpendingPercent", "Active", "ParentId"};
 		
-		Cursor results = db.query("BudgetCategoryItems", columns, null, null, null, null, null);
+		Cursor results = db.query("BudgetCategoryItems", columns, "ParentId=-1", null, null, null, null);
 		
 		while (results.moveToNext())
 		{
@@ -46,6 +46,8 @@ public class DatabaseAccess
 			newItem.Actual 						= results.getDouble(results.getColumnIndex("Actual"));
 			newItem.Merchant					= results.getString(results.getColumnIndex("Merchant"));
 			newItem.RecommendedSpendingPercent  = results.getFloat(results.getColumnIndex("RecommendedSpendingPercent"));
+			newItem.Active						= Utils.IntToBoolean(results.getInt(results.getColumnIndex("Active")));
+			newItem.ParentId					= results.getInt(results.getColumnIndex(columns[9]));
 			
 			items.add(newItem);
 		}
@@ -53,6 +55,40 @@ public class DatabaseAccess
 		db.close();
 		
 		return items;
+	}
+	
+	public ArrayList<BudgetCategoryItem> getSubItems(int parentId)
+	{
+		ArrayList<BudgetCategoryItem> subItems = new ArrayList<BudgetCategoryItem>();
+		
+		SQLiteDatabase db = m_helper.getReadableDatabase();
+		String[] columns = new String[] { "CategoryId", "Name", "Image", "ListImage", "Budgeted", "Actual", "Merchant", "RecommendedSpendingPercent", "Active", "ParentId"};
+		
+		String selection = columns[9]+"="+parentId;
+		
+		Cursor results = db.query("BudgetCategoryItems", columns, selection, null, null, null, null);
+		
+		while (results.moveToNext())
+		{
+			BudgetCategoryItem newItem = new BudgetCategoryItem();
+			
+			newItem.CategoryId					= results.getInt(results.getColumnIndex("CategoryId"));
+			newItem.Name 						= results.getString(results.getColumnIndex("Name")); 
+			newItem.Image						= results.getString(results.getColumnIndex("Image"));
+			newItem.ListImage					= results.getString(results.getColumnIndex("ListImage"));
+			newItem.Budgeted 					= results.getInt(results.getColumnIndex("Budgeted"));
+			newItem.Actual 						= results.getDouble(results.getColumnIndex("Actual"));
+			newItem.Merchant					= results.getString(results.getColumnIndex("Merchant"));
+			newItem.RecommendedSpendingPercent  = results.getFloat(results.getColumnIndex("RecommendedSpendingPercent"));
+			newItem.Active						= Utils.IntToBoolean(results.getInt(results.getColumnIndex("Active")));
+			newItem.ParentId					= results.getInt(results.getColumnIndex(columns[9]));
+			
+			subItems.add(newItem);
+		}
+		results.close();
+		db.close();
+		
+		return subItems;
 	}
 	
 	public void populateBudget(String[] _categories, Float[] _categoryPercs)
@@ -73,11 +109,28 @@ public class DatabaseAccess
 			values.put("Actual", -1.0);
 			values.put("Merchant", "");
 			values.put("RecommendedSpendingPercent", perc);
+			values.put("Active", 1);
+			values.put("ParentId", -1);
 			
 			db.insert("BudgetCategoryItems", null, values);
 		}
 		
 		db.close();
+	}
+	
+	public void addCategorySubItem(int categoryId, BudgetCategoryItem subItem ){
+		SQLiteDatabase db = m_helper.getWritableDatabase();
+		
+		ContentValues values = new ContentValues(); 
+		values.put("Name", subItem.Name);
+		values.put("Budgeted", subItem.Budgeted);
+		values.put("Actual", subItem.Actual);
+		values.put("Merchant", subItem.Merchant);
+		values.put("Active", 1);
+		values.put("ParentId", categoryId);
+		
+		db.insert("BudgetCategoryItems", null, values);
+		
 	}
 	
 	public void updateCategory(int _categoryId, Integer _budgeted, Float _actual, String _merchant)
@@ -113,6 +166,22 @@ public class DatabaseAccess
 			values.put("Merchant", _merchant);
 		}
 
+		String where = "CategoryId=?";
+		String[] whereArgs = new String[] {Integer.toString(_categoryId)};
+		
+		db.update("BudgetCategoryItems", values, where, whereArgs);
+		
+		db.close();
+	}
+	
+	public void updateCategoryActiveStatus(int _categoryId, boolean _active)
+	{
+		SQLiteDatabase db = m_helper.getWritableDatabase();
+		
+		ContentValues values = new ContentValues(); 
+		
+		values.put("Active", _active?1:0);
+		
 		String where = "CategoryId=?";
 		String[] whereArgs = new String[] {Integer.toString(_categoryId)};
 		

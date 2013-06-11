@@ -49,6 +49,11 @@ public class CostOfCredit extends Activity
 			App.setCostOfCreditInstructionsSeen();
 		}
 		
+		String cost_carryover = getIntent().getStringExtra("cost");
+		if(cost_carryover!=null){
+			m_itemCost.setText(cost_carryover);
+		}
+		
 		ThemeManager.SetBackgroundImage(this, (View)findViewById(R.id.costOfCreditParent), false);
 		ThemeManager.SetHeader(this, findViewById(R.id.costOfCreditHeader), false);
 		

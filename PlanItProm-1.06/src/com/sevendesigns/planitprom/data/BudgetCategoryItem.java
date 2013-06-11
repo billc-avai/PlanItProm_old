@@ -10,4 +10,6 @@ public class BudgetCategoryItem
 	public Double Actual;
 	public String Merchant;
 	public Float RecommendedSpendingPercent;
+	public boolean Active;
+	public int ParentId;
 }

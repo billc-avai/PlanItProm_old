@@ -5,6 +5,7 @@ import com.sevendesigns.planitprom.listadapters.BudgetAdapter;
 import com.sevendesigns.planitprom.utilities.ThemeManager;
 import com.sevendesigns.planitprom.utilities.Utils;
 import com.sevendesigns.planitprom.widgets.BudgetHealthMeter;
+import com.sevendesigns.planitprom.widgets.BudgetHealthWidget;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,7 +17,7 @@ public class Budget extends Activity
 {
 	ListView m_listView;
 	BudgetAdapter m_adapter;
-	BudgetHealthMeter m_meter;
+	BudgetHealthWidget mBudgetHealthWidget;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -32,7 +33,7 @@ public class Budget extends Activity
 			App.setBudgetInstructionsSeen();
 		}
 		
-		m_meter = (BudgetHealthMeter)findViewById(R.id.budgetmeter);
+		mBudgetHealthWidget = (BudgetHealthWidget)findViewById(R.id.budgetHealthWidget);
 		
 		ThemeManager.SetBackgroundImage(this, (View)findViewById(R.id.budgetParent), false);
 		ThemeManager.SetHeader(this, findViewById(R.id.budgetHeader), false);
@@ -53,7 +54,12 @@ public class Budget extends Activity
 		m_adapter = new BudgetAdapter(this);
 		m_listView.setAdapter(m_adapter);
 		
-		m_meter.setHealthInfo(App.getBudgetHealth());
+		refreshBudgetHealth();
+	}
+	
+	public void refreshBudgetHealth(){
+		mBudgetHealthWidget.refreshData();
+		mBudgetHealthWidget.invalidate();
 	}
 	
 	public void showInstructions(View _view)

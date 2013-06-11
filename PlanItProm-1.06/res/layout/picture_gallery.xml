@@ -1,9 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/PictureGalleryParent"
+    android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PictureGallery" >
+    tools:context=".PictureGallery" 
+    android:padding="10dp">
 
     <RelativeLayout
         android:id="@+id/pictureGalleryHeader"
@@ -39,13 +41,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/pictureGalleryHeader"
+        android:layout_above="@+id/footer"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp" 
         android:cacheColorHint="@android:color/transparent"
-        android:divider="@null" >
+        android:divider="@null"
+        android:visibility="visible" >
 
     </ListView>
+    
+    <LinearLayout 
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+    
+	    <Button 
+	        android:id="@+id/btnTakePhoto"
+	        android:layout_width="250dp"
+	        android:layout_height="35dp"
+	        android:layout_marginBottom="10dp"
+	        android:background="@drawable/btn_takephoto_blue"
+	        android:text=""
+	        />
+	    
+	    <Button 
+	        android:id="@+id/btnAddExistingPhoto"
+	        android:layout_width="250dp"
+	        android:layout_height="35dp"
+	        android:text="ADD PIC FROM EXISTING GALLERY"
+	        android:textColor="#FFFFFFFF"
+	        android:textStyle="bold"
+	        android:background="@drawable/button_gallery_blue"
+	        />
+    
+    </LinearLayout>
 
 </RelativeLayout>

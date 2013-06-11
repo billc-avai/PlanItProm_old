@@ -1,15 +1,15 @@
 package com.sevendesigns.planitprom;
 
-import com.flurry.android.FlurryAgent;
-import com.sevendesigns.planitprom.listadapters.TipsAdapter;
-import com.sevendesigns.planitprom.utilities.ThemeManager;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.flurry.android.FlurryAgent;
+import com.sevendesigns.planitprom.listadapters.TipsAdapter;
+import com.sevendesigns.planitprom.utilities.ThemeManager;
 
 public class Tips extends Activity
 {
