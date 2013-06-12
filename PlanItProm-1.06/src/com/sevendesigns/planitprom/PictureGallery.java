@@ -8,7 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.FacebookRequestError.Category;
 import com.flurry.android.FlurryAgent;
 import com.sevendesigns.planitprom.data.BudgetCategoryItem;
 import com.sevendesigns.planitprom.listadapters.PictureGalleryAdapter;
@@ -75,6 +74,12 @@ public class PictureGallery extends Activity
 		}
 		
 		Button btnTakePhoto = (Button)findViewById(R.id.btnTakePhoto);
+		Drawable buttonBkgd = ThemeManager.getThemedDrawable(this, "btn_takephoto");
+		
+		if(buttonBkgd!=null){
+			btnTakePhoto.setBackgroundDrawable(buttonBkgd);
+		}
+		
 		btnTakePhoto.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -86,6 +91,12 @@ public class PictureGallery extends Activity
 		});
 		
 		Button btnAddExistingPhoto = (Button)findViewById(R.id.btnAddExistingPhoto);
+		buttonBkgd = ThemeManager.getThemedDrawable(this, "button_gallery");
+		
+		if(buttonBkgd!=null){
+			btnAddExistingPhoto.setBackgroundDrawable(buttonBkgd);
+		}
+		
 		btnAddExistingPhoto.setOnClickListener(new OnClickListener() {
 			
 			@Override

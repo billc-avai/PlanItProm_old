@@ -269,6 +269,28 @@ public class ThemeManager
 		return _context.getResources().getDrawable(id);
 	}
 	
+	
+	public static Drawable getThemedDrawable(Context context, String drawableBaseName){
+		String colorSuffix = "_"+GetColorString();
+		int id = context.getResources().getIdentifier(drawableBaseName+colorSuffix , "drawable", context.getPackageName());
+		
+		if (id == 0){
+			id = context.getResources().getIdentifier(drawableBaseName, "drawable", context.getPackageName());
+		}
+		
+		if(id==0) return null;
+
+		return context.getResources().getDrawable(id);
+		
+	}
+	
+	public static Drawable getToggleCheckboxBackground(Context context){
+		
+		String baseName="btn_toggle_checkbox";
+		
+		return getThemedDrawable(context, baseName);
+	}
+	
 	public static Drawable GetThemeButtonDrawable(Context _context, int _id, boolean _selected)
 	{
 		String image = "thumbnail_";

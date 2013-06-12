@@ -74,7 +74,6 @@
 	        android:id="@+id/btnAddExistingPhoto"
 	        android:layout_width="250dp"
 	        android:layout_height="35dp"
-	        android:text="ADD PIC FROM EXISTING GALLERY"
 	        android:textColor="#FFFFFFFF"
 	        android:textStyle="bold"
 	        android:background="@drawable/button_gallery_blue"

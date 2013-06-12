@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -101,6 +102,8 @@ public class BudgetAdapter extends BaseAdapter
         budgeted.setKeyListener(null);
         actual.setKeyListener(null);
         
+        category.setEnabled(item.Active);
+        
         category.setOnClickListener(new OnClickListener() 
         {
            	public void onClick(View view) 
@@ -118,23 +121,24 @@ public class BudgetAdapter extends BaseAdapter
         });
         
     	ToggleButton checkBox = (ToggleButton)view.findViewById(R.id.budgetCategoryCheckbox);
+    	
+		Drawable checkboxBackground = ThemeManager.getToggleCheckboxBackground(m_context);
+		
+		if(checkboxBackground!=null){
+			checkBox.setBackgroundDrawable(checkboxBackground);
+		}
+
 		checkBox.setChecked(item.Active);
-//    	category.setAlpha(new Float(0x87));
         
     	checkBox.setOnClickListener(new OnClickListener() {
-			
+    		
 			@Override
 			public void onClick(View view) {
-				ToggleButton checkBox = (ToggleButton)view;  
+				ToggleButton checkBox = (ToggleButton)view;
 				
-				boolean checked = checkBox.isChecked();;
+				boolean checked = checkBox.isChecked();
+				category.setEnabled(checked);
 				m_data.get(position).Active=checked;
-				
-//				if(isChecked){
-//					category.setAlpha(new Float(0xFF));
-//				}else{
-//					category.setAlpha(new Float(0x87));
-//				}
 				
 				App.updateBudgetActiveStatus(item.CategoryId,checked);
 				

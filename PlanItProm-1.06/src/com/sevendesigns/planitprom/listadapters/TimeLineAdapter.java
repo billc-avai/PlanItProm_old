@@ -2,11 +2,11 @@ package com.sevendesigns.planitprom.listadapters;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -143,6 +143,13 @@ public class TimeLineAdapter extends BaseAdapter
 			if(tip!=null){
 				Button tipsButton = (Button)subView.findViewById(R.id.btn_tips);
 				tipsButton.setTag(tip);
+				
+				Drawable tipsButtonBkgd = ThemeManager.getThemedDrawable(m_context, "tips_small");
+				
+				if(tipsButtonBkgd!=null){
+					tipsButton.setBackgroundDrawable(tipsButtonBkgd);
+				}
+				
 				tipsButton.setVisibility(View.VISIBLE);
 				
 				tipsButton.setOnClickListener(new OnClickListener() {
