@@ -30,6 +30,7 @@
 				android:layout_height="30dp"
 				android:textOn="" 
 				android:textOff=""
+				android:checked="true"
 				android:src="@drawable/carrot_down_img"
 				android:background="@drawable/btn_toggle_carrot"
 		
@@ -54,7 +55,7 @@
 		    android:background="@drawable/budget_health_table_bkgd"
 		    android:orientation="vertical"
 		    android:layout_marginBottom="10dp"
-		    android:visibility="gone"
+		    android:visibility="visible"
 		    >
 		    
 		    <LinearLayout 

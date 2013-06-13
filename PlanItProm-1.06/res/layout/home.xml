@@ -57,7 +57,7 @@
 	    <ImageButton
 	        android:id="@+id/homeBudgetButton"
 	        android:layout_width="match_parent"
-	        android:layout_height="40dp"
+	        android:layout_height="38dp"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginLeft="20dp"
 	        android:layout_marginRight="20dp"
@@ -69,7 +69,7 @@
 	    <ImageButton
 	        android:id="@+id/tips"
 	        android:layout_width="match_parent"
-	        android:layout_height="40dp"
+	        android:layout_height="38dp"
 	        android:layout_below="@id/homeBudgetButton"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginLeft="20dp"
@@ -82,7 +82,7 @@
 	    <ImageButton
 	        android:id="@+id/timeline"
 	        android:layout_width="match_parent"
-	        android:layout_height="40dp"
+	        android:layout_height="38dp"
 	        android:layout_below="@id/tips"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginLeft="20dp"
@@ -95,12 +95,25 @@
 	    <ImageButton
 	        android:id="@+id/photogallery"
 	        android:layout_width="match_parent"
-	        android:layout_height="40dp"
+	        android:layout_height="38dp"
 	        android:layout_below="@id/timeline"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginLeft="20dp"
 	        android:layout_marginRight="20dp"
+	        android:layout_marginBottom="5dp"
 	        android:onClick="doPhotoGallery"
+	        android:background="@android:color/transparent" 
+	        android:scaleType="fitXY"/>
+	    
+	    <ImageButton
+	        android:id="@+id/takephoto"
+	        android:layout_width="match_parent"
+	        android:layout_height="38dp"
+	        android:layout_below="@id/photogallery"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:onClick="doTakePhoto"
 	        android:background="@android:color/transparent" 
 	        android:scaleType="fitXY"/>
 	
@@ -108,7 +121,7 @@
 	        android:id="@+id/daysLeftGroup"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@id/photogallery"
+	        android:layout_below="@id/takephoto"
 	        android:layout_marginLeft="20dp"
 	        android:layout_marginRight="20dp"
 	        android:layout_marginTop="20dp" >

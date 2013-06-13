@@ -74,7 +74,7 @@ public class PictureGallery extends Activity
 		}
 		
 		Button btnTakePhoto = (Button)findViewById(R.id.btnTakePhoto);
-		Drawable buttonBkgd = ThemeManager.getThemedDrawable(this, "btn_takephoto");
+		Drawable buttonBkgd = ThemeManager.getThemedDrawable(this, "button_takephoto");
 		
 		if(buttonBkgd!=null){
 			btnTakePhoto.setBackgroundDrawable(buttonBkgd);

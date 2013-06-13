@@ -191,7 +191,8 @@ public class ThemeManager
 		_view.setTypeface(m_font);  
 	}
 	
-	public static void SetHomeButtons(Context _context, ImageButton _budget, ImageButton _tips, ImageButton _timeLine, ImageButton _photoGallery)
+	public static void SetHomeButtons(Context _context, ImageButton _budget, 
+			ImageButton _tips, ImageButton _timeLine, ImageButton _photoGallery, ImageButton _takePhoto)
 	{
 		String color = GetColorString();
 		String loc = GetLocale();
@@ -235,6 +236,15 @@ public class ThemeManager
 		}
 		
 		_photoGallery.setImageResource(id);
+		
+		id = _context.getResources().getIdentifier("button_takephoto_" + color + loc, "drawable", _context.getPackageName());
+		
+		if (id == 0)
+		{
+			id = _context.getResources().getIdentifier("button_takephoto_" + color, "drawable", _context.getPackageName());
+		}
+		
+		_takePhoto.setImageResource(id);
 	}
 	
 	public static void SetListItemHeaderColor(TextView _view)

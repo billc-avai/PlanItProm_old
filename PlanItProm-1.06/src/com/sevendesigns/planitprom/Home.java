@@ -1,6 +1,11 @@
 package com.sevendesigns.planitprom;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +14,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.flurry.android.FlurryAgent;
+import com.sevendesigns.planitprom.data.BudgetCategoryItem;
 import com.sevendesigns.planitprom.utilities.ThemeManager;
 import com.sevendesigns.planitprom.utilities.Utils;
-import com.sevendesigns.planitprom.widgets.BudgetHealthMeter;
 import com.sevendesigns.planitprom.widgets.BudgetHealthWidget;
 
 public class Home extends Activity
@@ -20,6 +25,9 @@ public class Home extends Activity
 	EditText m_daysLeft; 
 	
 	BudgetHealthWidget mBudgetHealthWidget;
+	
+	String[] mCategories;
+	HashMap<String,Integer> mCategoryIdMap;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -38,11 +46,23 @@ public class Home extends Activity
 						(ImageButton)findViewById(R.id.homeBudgetButton), 
 						(ImageButton)findViewById(R.id.tips), 
 						(ImageButton)findViewById(R.id.timeline), 
-						(ImageButton)findViewById(R.id.photogallery));
+						(ImageButton)findViewById(R.id.photogallery),
+						(ImageButton)findViewById(R.id.takephoto));
 		ThemeManager.SetHeader(this, findViewById(R.id.headerHome), false);
 		
 		ThemeManager.SetFont(this, (TextView)findViewById(R.id.eventDateText));
 		ThemeManager.SetFont(this, (TextView)findViewById(R.id.budgetSpentText));
+		
+		//setup data for category list for Take Photo option
+		ArrayList<BudgetCategoryItem> categories=App.getBudgetCategoryItems();
+		mCategories = new String[categories.size()];
+		mCategoryIdMap = new HashMap<String, Integer>();
+		
+		for(int i=0;i<categories.size();i++){
+			BudgetCategoryItem item = categories.get(i); 
+			mCategoryIdMap.put(item.Name, item.CategoryId);
+			mCategories[i]=item.Name;
+		}
 	}
 	
 	@Override
@@ -77,6 +97,28 @@ public class Home extends Activity
 	{
 		Intent next = new Intent (this, PictureGallery.class);
 		startActivity(next);
+	}
+	
+	public void doTakePhoto(View _view)
+	{
+		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+	    dialog.setTitle("Select the gallery where you wish to add a photo.");
+	    
+	    dialog.setItems(mCategories, new DialogInterface.OnClickListener() {
+
+	        @Override
+	        public void onClick(DialogInterface dialog, int which) {
+	            dialog.dismiss();
+	            
+	            Intent intent = new Intent();
+            	intent.setClass(getApplicationContext(),CameraScreen.class);
+            	intent.putExtra("categoryid", mCategoryIdMap.get(mCategories[which]));
+	            startActivity(intent);
+	        }
+
+	    });
+
+	    dialog.show();
 	}
 	
 	public void doSettings(View _view)
