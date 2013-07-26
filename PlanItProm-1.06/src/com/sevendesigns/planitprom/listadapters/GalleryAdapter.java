@@ -90,53 +90,56 @@ public class GalleryAdapter extends BaseAdapter
         imageView.setPadding(8, 8, 8, 8);        
 
         ImageInfo info = App.getImageInfoByImageId(item.ImageId.get(0));
-        String name = m_context.getFilesDir() + "/" + info.FileName;
+        String name= (!info.FileName.contains("/")?m_context.getFilesDir():"") + "/" + info.FileName+"x";
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 8;
         
         Bitmap bm = BitmapFactory.decodeFile(name, options);
         
-        Matrix matrix = new Matrix();
+        if(bm!=null){
         
-        matrix.postRotate(90);
-        bm = Bitmap.createBitmap(bm , 0, 0, bm.getWidth(), bm.getHeight(), matrix, true);
-        
-        imageView.setImageBitmap(bm);
-
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-
-        imageView.setClickable(true);
-        
-        imageView.setOnClickListener( new OnClickListener()
-        {
-			@Override
-			public void onClick(View v)
-			{
-				if (m_returnToCaller)
+	        Matrix matrix = new Matrix();
+	        
+	        matrix.postRotate(90);
+	        bm = Bitmap.createBitmap(bm , 0, 0, bm.getWidth(), bm.getHeight(), matrix, true);
+	        
+	        imageView.setImageBitmap(bm);
+	
+	        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+	
+	        imageView.setClickable(true);
+	        
+	        imageView.setOnClickListener( new OnClickListener()
+	        {
+				@Override
+				public void onClick(View v)
 				{
-					Activity activity = (Activity)m_context;
-					Intent intent = activity.getIntent();
-					intent.putExtra("imageid", item.ImageId.get(0));
-					activity.setResult(Activity.RESULT_OK, intent);
-					activity.finish();
+					if (m_returnToCaller)
+					{
+						Activity activity = (Activity)m_context;
+						Intent intent = activity.getIntent();
+						intent.putExtra("imageid", item.ImageId.get(0));
+						activity.setResult(Activity.RESULT_OK, intent);
+						activity.finish();
+					}
+					else
+					{
+						PictureGalleryItemInfo data = m_data.get(position);
+						ImageInfo info2 = App.getImageInfoByImageId(item.ImageId.get(0));
+						
+						Intent next = new Intent (m_context, PictureGalleryMultipleItem.class);
+						next.putExtra("imageId", info2.ImageId);
+						next.putExtra("fileName", info2.FileName);
+						next.putExtra("categoryId", info2.CategoryId);
+						next.putExtra("update", true);
+						next.putExtra("itemid", data.ItemId);
+						
+						m_context.startActivity(next);
+					}
 				}
-				else
-				{
-					PictureGalleryItemInfo data = m_data.get(position);
-					ImageInfo info2 = App.getImageInfoByImageId(item.ImageId.get(0));
-					
-					Intent next = new Intent (m_context, PictureGalleryMultipleItem.class);
-					next.putExtra("imageId", info2.ImageId);
-					next.putExtra("fileName", info2.FileName);
-					next.putExtra("categoryId", info2.CategoryId);
-					next.putExtra("update", true);
-					next.putExtra("itemid", data.ItemId);
-					
-					m_context.startActivity(next);
-				}
-			}
-        });
+	        });
+        }
        
         return imageView;
     }
