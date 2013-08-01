@@ -90,7 +90,7 @@ public class GalleryAdapter extends BaseAdapter
         imageView.setPadding(8, 8, 8, 8);        
 
         ImageInfo info = App.getImageInfoByImageId(item.ImageId.get(0));
-        String name= (!info.FileName.contains("/")?m_context.getFilesDir():"") + "/" + info.FileName+"x";
+        String name= (!info.FileName.contains("/")?m_context.getFilesDir():"") + "/" + info.FileName;
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 8;

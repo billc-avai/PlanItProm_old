@@ -113,6 +113,13 @@ public class PictureGallery extends Activity
 		
 	}
 	
+	@Override
+	public void onResume(){
+		super.onResume();
+		
+		m_adapter.notifyDataSetChanged();
+	}
+	
 	private void promptForGallery(){
 		AlertDialog.Builder dialog = new AlertDialog.Builder(PictureGallery.this);
 	    dialog.setTitle("Select the gallery where you wish to add a photo.");

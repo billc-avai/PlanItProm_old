@@ -255,20 +255,6 @@ public class PictureGalleryMultipleItem extends Activity
 	public void doDone(View _view)
 	{
 		save();
-		
-		Intent next;
-		
-		if (m_fromGallery)
-		{
-			next = new Intent(this, PictureGallery.class);
-		}
-		else
-		{
-			next = new Intent(this, Budget.class);
-		}
-		
-		next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(next);
 		finish();
 	}
 	
