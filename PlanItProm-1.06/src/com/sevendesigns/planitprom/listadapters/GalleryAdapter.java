@@ -90,7 +90,15 @@ public class GalleryAdapter extends BaseAdapter
         imageView.setPadding(8, 8, 8, 8);        
 
         ImageInfo info = App.getImageInfoByImageId(item.ImageId.get(0));
-        String name= (!info.FileName.contains("/")?m_context.getFilesDir():"") + "/" + info.FileName;
+        String name;
+        Boolean rotate=false;
+        
+        if(!info.FileName.contains("/")){
+        	name=m_context.getFilesDir() + "/" + info.FileName;
+        	rotate=true;
+        }else{
+        	name= info.FileName;
+        }
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 8;
@@ -101,7 +109,8 @@ public class GalleryAdapter extends BaseAdapter
         
 	        Matrix matrix = new Matrix();
 	        
-	        matrix.postRotate(90);
+	        if(rotate) matrix.postRotate(90);
+	        
 	        bm = Bitmap.createBitmap(bm , 0, 0, bm.getWidth(), bm.getHeight(), matrix, true);
 	        
 	        imageView.setImageBitmap(bm);
